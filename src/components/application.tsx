@@ -33,7 +33,7 @@ const Application = () => {
                 {Object.entries(student).map((item) =>
                   item[0] === "FOTO" || item[0] === "FOTO TEMPAT KERJA" ? (
                     <td>
-                      <img src={`https://lh3.googleusercontent.com/d/${item[1]}=s1000`} alt="Hellow" />
+                      <img src={`https://lh3.googleusercontent.com/d/${item[1]}=s1000`} alt="Hellow" width={100} height={100} />
                     </td>
                   ) : (
                     <td>{item[1]}</td>
