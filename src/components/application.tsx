@@ -17,8 +17,34 @@ const Application = () => {
 
   return (
     <>
-    <div>{JSON.stringify(data)}</div>
-    <div><img src="https://lh3.googleusercontent.com/d/1CDcNR3C36XPXT3RB2JKFWcGEfu2epkwM=s1000?authuser=0" alt="Hellow" /></div></>
+      {loading && <div>Loading...</div>}
+      {!error && data[0].data.length > 0 && (
+        <table style={{ width: "3000px" }}>
+          <thead>
+            <tr>
+              {Object.keys(data[0].data[0]).map((item) => (
+                <th>{item}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data[0].data.map((student) => (
+              <tr>
+                {Object.entries(student).map((item) =>
+                  item[0] === "FOTO" || item[0] === "FOTO TEMPAT KERJA" ? (
+                    <td>
+                      <img src={`https://lh3.googleusercontent.com/d/${item[1]}=s1000`} alt="Hellow" />
+                    </td>
+                  ) : (
+                    <td>{item[1]}</td>
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </>
   );
 };
 
